@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Yield Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Crop Yield Prediction</h2>
+    <form method="POST">
+      <div class="row">
+        {% for field in ['year','location','area','rainfall','temperature','soil_type','irrigation','humidity','crops','price','season'] %}
+        <div class="form-group col-md-4">
+          <label>{{ field.replace('_',' ').title() }}</label>
+          <input type="number" class="form-control" name="{{ field }}" required>
+        </div>
+        {% endfor %}
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Predict</button>
+    </form>
+
+    {% if cat or xgb or lstm %}
+    <div class="mt-4">
+      <h4>Predictions:</h4>
+      <ul>
+        <li><strong>CatBoost:</strong> {{ cat }}</li>
+        <li><strong>XGBoost:</strong> {{ xgb }}</li>
+        <li><strong>LSTM:</strong> {{ lstm }}</li>
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger mt-3">{{ error }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
