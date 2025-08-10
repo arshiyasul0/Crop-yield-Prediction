@@ -73,6 +73,8 @@ crop-yield-prediction-app
    ```bash
    pip freeze > requirements.txt
 
+   ```
+
 ## 📝 Usage
  1. Enter all required values:
 
@@ -89,4 +91,5 @@ crop-yield-prediction-app
 
 2. Click Predict.
 3. View predictions from CatBoost, XGBoost, and LSTM models.
+ 
  
